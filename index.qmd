@@ -6,11 +6,12 @@ format:
     theme: simple
     slide-number: true
     incremental: true
-    transition: convex
+    transition: slide
     transition-speed: slow
     code-overlays: true
     width: 1280
     height: 720
+    scrollable: true
 title-slide-attributes:
   data-background-image: "https://image.slidesdocs.com/responsive-images/background/blue-abstract-texture-polygon-technology-nature-powerpoint-background_94e8175035__960_540.jpg"
   data-background-size: cover
@@ -20,6 +21,10 @@ title-slide-attributes:
 ## Soy una diapositiva invisible {visibility="hidden"}
 
 Aquí hay un top secret.
+
+## Diapo 2 {visibility="hidden"}
+
+sidjfsidjf
 
 
 ## Temas de RevealJS (diapo centrada) {.center}
@@ -57,14 +62,20 @@ Aquí hay un top secret.
 
 ## Imagen desde la Web
 
-![Quarto Logo](https://quarto.org/img/quarto-logo.png)
+![TEXTO ALTERNATIVO](exports/figs/peces_figura_2.png)
 
-
+![Quarto Logo](https://quarto.org/images/demo-jupyter-plain.png)
 
 ## Colocar un gran texto que nunca se desborda
 
 ::: {.r-fit-text}
 masterX
+:::
+
+## {.center}
+
+::: {.r-fit-text}
+Configuraciones
 :::
 
 ## Añadiendo fragmentos 
@@ -86,7 +97,11 @@ Fade in, then out
 :::
 
 ::: {.fragment .fade-up}
-Slide up while fading in
+```{r}
+# CODIGOS
+plot(1:100)
+```
+
 :::
 
 
@@ -149,6 +164,14 @@ mtcars
 
 ```{r}
 #| echo: false
+
+library(raster)
+r <- raster("Penelope_albipennis_1_MRI-ESM2-0_ssp585_2081-2100.asc")
+```
+
+
+```{r}
+#| echo: false
 #| eval: true
 #| fig-width: 12
 #| fig-height: 6.5
@@ -160,8 +183,9 @@ library(leaflet)
 # Crear un mapa básico
 leaflet() %>%
   addTiles() %>%  # Añadir el mapa base
-  setView(lng = -78.7038, lat = -5.4168, zoom = 6) %>%  # Centrar el mapa en Madrid, España
-  addMarkers(lng = -3.7038, lat = 40.4168, popup = "Madrid")
+  setView(lng = -78.7038, lat = -5.4168, zoom = 6) %>% 
+  addMarkers(lng = -3.7038, lat = 40.4168, popup = "Madrid") %>% 
+  addRasterImage(r, opacity = 0.5) 
 ```
 
 ## Insertando interactividad: Plotly
@@ -222,6 +246,12 @@ fig <- fig %>%
 fig
 
 ```
+
+## Crazzy parrot
+
+![Loro loco](https://media.tenor.com/x-kqDAmw2NQAAAAM/parrot-party.gif)
+
+
 
 
 
